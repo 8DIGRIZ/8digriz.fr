@@ -254,6 +254,8 @@ a { color: inherit; }
   margin: 0;
 }
 
+.hero__body a { color: var(--accent); }
+
 /* --- Legal / prose pages --- */
 
 .page-head {
