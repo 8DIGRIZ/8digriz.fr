@@ -36,12 +36,10 @@
 * { box-sizing: border-box; }
 
 html {
-  min-height: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  min-height: 100%;
   margin: 0;
   background:
     linear-gradient(90deg, transparent 0 calc(100% - 1px), rgba(244,240,230,.08) calc(100% - 1px)) 0 0 / 25% 100%,
@@ -66,10 +64,10 @@ a:hover { color: var(--accent); }
 }
 
 .page {
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   padding: var(--pad);
 }
 
@@ -99,15 +97,16 @@ nav,
 .hero {
   display: grid;
   align-content: end;
-  gap: clamp(2rem, 6vw, 4.5rem);
-  padding-block: clamp(5rem, 16vh, 9rem) clamp(3rem, 8vh, 6rem);
+  min-height: 0;
+  gap: clamp(1.25rem, 5vh, 4.5rem);
+  padding-block: clamp(1.5rem, 9vh, 9rem) clamp(1rem, 4vh, 6rem);
 }
 
 .name {
   margin: 0;
   max-width: 9ch;
   font-family: var(--display);
-  font-size: clamp(5rem, 22vw, 19rem);
+  font-size: min(22vw, 24vh, 19rem);
   font-weight: 800;
   line-height: .76;
   letter-spacing: 0;
@@ -121,13 +120,13 @@ nav,
   gap: clamp(2rem, 8vw, 8rem);
   align-items: end;
   border-top: 1px solid var(--line);
-  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-top: clamp(1rem, 3vh, 2.5rem);
 }
 
 .lede {
   margin: 0;
   max-width: 25ch;
-  font-size: clamp(1.55rem, 3.2vw, 3rem);
+  font-size: clamp(1.3rem, min(3.2vw, 7vh), 3rem);
   line-height: 1.02;
   text-wrap: balance;
 }
@@ -166,5 +165,12 @@ nav,
 
   .hero { align-content: center; }
 
-  .statement { grid-template-columns: 1fr; }
+  .statement {
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 4vh, 3rem);
+  }
+
+  .meta { gap: .55rem; }
+
+  .meta p { padding-top: .55rem; }
 }
